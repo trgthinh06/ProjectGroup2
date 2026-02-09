@@ -4,16 +4,16 @@
 
 /* 1. Nhúng Josefin Sans (Dùng cho chữ nhỏ, mô tả) */
 @font-face {
-  font-family: 'Josefin Sans';
-  src: url('fonts/JosefinSans-Regular.ttf') format('truetype');
+  font-family: "Josefin Sans";
+  src: url("fonts/JosefinSans-Regular.ttf") format("truetype");
   font-weight: 400;
   /* Độ đậm thường */
   font-style: normal;
 }
 
 @font-face {
-  font-family: 'Josefin Sans';
-  src: url('fonts/JosefinSans-Bold.ttf') format('truetype');
+  font-family: "Josefin Sans";
+  src: url("fonts/JosefinSans-Bold.ttf") format("truetype");
   font-weight: 700;
   /* Độ đậm: Đậm */
   font-style: normal;
@@ -22,15 +22,15 @@
 /* 2. Nhúng SVN-Gilroy (Dùng cho Tiêu đề sang trọng) */
 /* Lưu ý: Bạn hãy kiểm tra tên file trong thư mục fonts có đúng là 'SVN-Gilroy-Regular.ttf' không nhé */
 @font-face {
-  font-family: 'SVN-Gilroy';
-  src: url('fonts/SVN-Gilroy\ Regular.otf') format('truetype');
+  font-family: "SVN-Gilroy";
+  src: url("fonts/SVN-Gilroy\ Regular.otf") format("truetype");
   font-weight: 400;
   font-style: normal;
 }
 
 @font-face {
-  font-family: 'SVN-Gilroy';
-  src: url('fonts/SVN-Gilroy\ Bold.otf') format('truetype');
+  font-family: "SVN-Gilroy";
+  src: url("fonts/SVN-Gilroy\ Bold.otf") format("truetype");
   font-weight: 700;
   font-style: normal;
 }
@@ -44,14 +44,13 @@
   --bg-light: #f9f9f9;
 }
 
-
 /* =========================================
    1. VARIABLES & GLOBAL STYLES
    ========================================= */
 
 /* Body dùng Josefin Sans cho hiện đại, sạch sẽ, dễ đọc */
 body {
-  font-family: 'Josefin Sans', sans-serif;
+  font-family: "Josefin Sans", sans-serif;
   color: #333;
   line-height: 1.6;
 }
@@ -65,7 +64,7 @@ h5,
 h6,
 .brand-font,
 .navbar-brand {
-  font-family: 'SVN-Gilroy', sans-serif;
+  font-family: "SVN-Gilroy", sans-serif;
   font-weight: 400;
   /* Gilroy in đậm nhìn rất đẹp */
   /* letter-spacing: -0.5px; Thu hẹp khoảng cách chữ xíu cho chặt chẽ */
@@ -89,7 +88,7 @@ h6,
 }
 
 .price {
-  font-family: 'SVN-Gilroy', sans-serif;
+  font-family: "SVN-Gilroy", sans-serif;
   /* Giá tiền dùng Gilroy số sẽ đẹp hơn */
 }
 
@@ -589,7 +588,6 @@ footer .small {
 }
 
 @media (max-width: 768px) {
-
   /* Hero */
   .carousel-caption {
     left: 5% !important;
@@ -909,9 +907,8 @@ footer .small {
 .product-img-box {
   position: relative;
   overflow: hidden;
-  /* Giữ nguyên chiều cao bạn đang có */
   height: 350px;
-  background: #f4f4f4;
+  background: #fcfcfc; /* Đã sửa thành màu sáng hơn giống ảnh mẫu */
 }
 
 /* Ảnh bên trong */
@@ -919,49 +916,33 @@ footer .small {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  /* Thêm transition cho filter để mờ dần đều */
-  transition: transform 0.6s ease, filter 0.4s ease;
-  will-change: transform, filter;
+  transition: transform 0.6s ease; /* Bỏ transition cho filter vì đã xóa filter */
+  will-change: transform;
 }
 
 /* --- HIỆU ỨNG HOVER --- */
-/* Khi di chuột vào card:
-   1. Ảnh phóng to nhẹ (scale)
-   2. Ảnh mờ đi (blur)
-   3. Tối đi một chút để nút trắng nổi bật hơn (brightness)
-*/
 .product-card:hover .product-img-box img {
   transform: scale(1.08);
-  filter: blur(4px) brightness(0.85);
+  /* ĐÃ XÓA dòng filter: blur... để ảnh luôn rõ nét như trong hình mẫu */
 }
 
-/* --- KHỐI CHỨA 2 NÚT (CĂN GIỮA TUYỆT ĐỐI) --- */
+/* --- KHỐI CHỨA 2 NÚT --- */
 .product-actions {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
-  /* Phủ kín toàn bộ khung ảnh */
   height: 100%;
-  /* Phủ kín toàn bộ khung ảnh */
-
-  /* Dùng Flexbox để căn nội dung vào chính giữa khung */
   display: flex;
   align-items: center;
-  /* Căn giữa dọc */
   justify-content: center;
-  /* Căn giữa ngang */
   gap: 15px;
-  /* Khoảng cách giữa 2 nút */
-
   z-index: 5;
   opacity: 0;
-  /* Mặc định ẩn */
   visibility: hidden;
   transition: all 0.3s ease;
 }
 
-/* Khi hover thì hiện khối chứa nút lên */
 .product-card:hover .product-actions {
   opacity: 1;
   visibility: visible;
@@ -974,27 +955,45 @@ footer .small {
   background: #fff;
   border-radius: 50%;
   color: #000;
-
-  /* Căn icon nằm chính xác giữa nút tròn */
   display: flex;
   align-items: center;
   justify-content: center;
-
   text-decoration: none;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); /* Giảm độ đậm của bóng đổ */
   transform: translateY(20px);
-  /* Đẩy xuống nhẹ để tạo hiệu ứng trượt lên */
   transition: all 0.3s ease;
 }
 
-/* Hiệu ứng trượt nút lên khi hover */
 .product-card:hover .btn-action {
   transform: translateY(0);
 }
 
 .btn-action:hover {
-  background: var(--accent-color);
-  /* Màu vàng của bạn */
+  background: #000; /* Đổi thành màu đen cho đúng chất Minimalist của ảnh mẫu */
   color: #fff;
-  box-shadow: 0 5px 20px rgba(197, 160, 89, 0.4);
 }
+
+/* Thêm mới để giống Sidebar trong ảnh mẫu */
+.form-check-input {
+  border-radius: 50% !important; /* Biến ô checkbox vuông thành tròn */
+  border: 1px solid #ccc !important;
+}
+
+.form-check-input:checked {
+  background-color: #000 !important; /* Khi tích vào hiện màu đen */
+  border-color: #000 !important;
+}
+
+/* Thêm mới đoạn này vào cuối style.css */
+.filter-sidebar {
+    position: relative;    /* Sidebar sẽ trôi theo trang, không bị đứng yên */
+    padding-right: 20px;   /* Tạo khoảng cách với cột sản phẩm bên phải */
+    background: #fff;      /* Đảm bảo nền trắng sạch sẽ như ảnh mẫu */
+}
+
+.filter-group {
+    border-bottom: 1px solid #eee; /* Gạch chân nhẹ dưới mỗi nhóm lọc như ảnh mẫu */
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+}
+
