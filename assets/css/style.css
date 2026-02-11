@@ -9,15 +9,12 @@
   font-family: "Josefin Sans";
   src: url("fonts/JosefinSans-Regular.ttf") format("truetype");
   font-weight: 400;
-  /* Độ đậm thường */
   font-style: normal;
 }
-
 @font-face {
   font-family: "Josefin Sans";
   src: url("fonts/JosefinSans-Bold.ttf") format("truetype");
   font-weight: 700;
-  /* Độ đậm: Đậm */
   font-style: normal;
 }
 
@@ -28,7 +25,6 @@
   font-weight: 400;
   font-style: normal;
 }
-
 @font-face {
   font-family: "SVN-Gilroy";
   src: url("fonts/SVN-Gilroy\ Bold.otf") format("truetype");
@@ -39,8 +35,10 @@
 /* --- 1.2. VARIABLES (BIẾN MÀU SẮC) --- */
 :root {
   --primary-color: #000000;
-  --accent-color: #c5a059;
+  --accent-color: #c5a059; /* Màu vàng đồng */
   --bg-light: #f9f9f9;
+  --text-gray: #666;
+  --border-color: #eee;
 }
 
 /* --- 1.3. GLOBAL STYLES (STYLE CHUNG TOÀN TRANG) --- */
@@ -48,6 +46,7 @@ body {
   font-family: "Josefin Sans", sans-serif;
   color: #333;
   line-height: 1.6;
+  overflow-x: hidden; /* Tránh thanh cuộn ngang không mong muốn */
 }
 
 /* Tiêu đề dùng SVN-Gilroy cho sự đẳng cấp */
@@ -58,7 +57,9 @@ h4,
 h5,
 h6,
 .brand-font,
-.navbar-brand {
+.navbar-brand,
+.price,
+.current-price {
   font-family: "SVN-Gilroy", sans-serif;
   font-weight: 400;
 }
@@ -273,7 +274,7 @@ h6,
 /* --- 3.1. NAVBAR --- */
 .navbar {
   padding: 20px 0;
-  border-bottom: 1px solid #eee;
+  border-bottom: 1px solid var(--border-color);
   background: #fff !important;
 }
 
@@ -281,6 +282,7 @@ h6,
   font-size: 1.6rem;
   font-weight: 700;
   letter-spacing: 2px;
+  color: var(--primary-color);
 }
 
 .nav-link {
@@ -300,13 +302,12 @@ h6,
   border: none;
   border-radius: 0;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  margin-top: 0;
 }
-
 .dropdown-item {
   font-size: 0.9rem;
   padding: 10px 20px;
 }
-
 .dropdown-item:hover {
   background-color: #f8f9fa;
   color: var(--accent-color);
@@ -318,7 +319,6 @@ h6,
   display: flex;
   align-items: center;
 }
-
 .search-input {
   width: 200px;
   height: 38px;
@@ -329,7 +329,6 @@ h6,
   font-size: 0.85rem;
   transition: width 0.3s ease;
 }
-
 .search-icon {
   position: absolute;
   right: 15px;
@@ -384,7 +383,6 @@ footer .small {
   background-position: center;
   position: relative;
 }
-
 .carousel-overlay {
   position: absolute;
   top: 0;
@@ -393,18 +391,15 @@ footer .small {
   height: 100%;
   background: rgba(0, 0, 0, 0.3);
 }
-
 .carousel-caption {
   top: 50%;
   transform: translateY(-50%);
   bottom: initial;
   text-align: left;
-  z-index: 2;
-  max-width: 650px;
   left: 10% !important;
+  max-width: 650px;
   padding-right: 20px;
 }
-
 .carousel-caption h1 {
   font-size: 3.5rem;
   line-height: 1.2;
@@ -424,12 +419,12 @@ footer .small {
   width: 100%;
   padding: 30px 0;
   overflow: hidden;
+  position: relative; /* Quan trọng để nút bấm hiển thị */
 }
 
 .perfume-slider .swiper-slide {
   width: 380px;
   height: 500px;
-  position: relative;
   border-radius: 12px;
   opacity: 0 !important;
   visibility: hidden;
@@ -457,14 +452,14 @@ footer .small {
   width: 100%;
   height: 100%;
   display: block;
+  position: relative;
 }
-
 .collection-item img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  display: block;
   border-radius: 10px;
+  display: block;
 }
 
 .collection-title {
@@ -473,7 +468,7 @@ footer .small {
   left: 50%;
   transform: translateX(-50%);
   color: #fff;
-  font-family: "Playfair Display", serif;
+  font-family: "SVN-Gilroy", sans-serif;
   font-size: 1.2rem;
   font-weight: 700;
   z-index: 20;
@@ -510,7 +505,11 @@ footer .small {
   font-size: 16px !important;
   font-weight: bold;
 }
-
+.swiper-button-next:hover,
+.swiper-button-prev:hover {
+  background: var(--accent-color) !important;
+  color: #fff !important;
+}
 .swiper-button-prev {
   left: 5%;
 }
@@ -562,9 +561,8 @@ footer .small {
   color: var(--accent-color);
   margin-bottom: 15px;
 }
-
 .k-percent {
-  font-family: "Playfair Display", serif;
+  font-family: "SVN-Gilroy", serif;
   font-size: 2rem;
   font-weight: 700;
   color: #333;
@@ -590,13 +588,11 @@ footer .small {
   color: #555;
   cursor: default;
 }
-
 .scent-tag:hover {
   background: var(--accent-color);
   color: #fff;
   border-color: var(--accent-color);
 }
-
 .scent-tag i {
   font-size: 1.2rem;
   margin-bottom: 5px;
@@ -893,7 +889,6 @@ footer .small {
   padding: 15px;
   border: 1px solid #eee;
 }
-
 .about-image-box img {
   width: 100%;
   display: block;
@@ -914,7 +909,6 @@ footer .small {
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
   border-left: 4px solid var(--accent-color);
 }
-
 .since-badge .year {
   font-size: 2rem;
   font-weight: 700;
@@ -926,13 +920,11 @@ footer .small {
   transition: all 0.3s ease;
   border: 1px solid transparent;
 }
-
 .value-card:hover {
   transform: translateY(-10px);
   box-shadow: 0 15px 30px rgba(0, 0, 0, 0.05);
   border-color: #eee;
 }
-
 .icon-circle {
   width: 70px;
   height: 70px;
@@ -947,7 +939,6 @@ footer .small {
   transition: 0.3s;
   border: 1px solid #eee;
 }
-
 .value-card:hover .icon-circle {
   background: var(--accent-color);
   color: #fff;
